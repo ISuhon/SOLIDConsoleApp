@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\unik\\ПІС\\1 лаба(актуально)\\SOLIDConsoleApp\\SOLIDConsoleApp\\SOLIDConsoleApp.csproj",
+      "projectUniqueName": "D:\\unik\\ПІС\\project\\SOLIDConsoleApp\\SOLIDConsoleApp.csproj",
       "projectName": "SOLIDConsoleApp",
-      "projectPath": "D:\\unik\\ПІС\\1 лаба(актуально)\\SOLIDConsoleApp\\SOLIDConsoleApp\\SOLIDConsoleApp.csproj",
+      "projectPath": "D:\\unik\\ПІС\\project\\SOLIDConsoleApp\\SOLIDConsoleApp.csproj",
       "packagesPath": "C:\\Users\\Грибной Властелин\\.nuget\\packages\\",
-      "outputPath": "D:\\unik\\ПІС\\1 лаба(актуально)\\SOLIDConsoleApp\\SOLIDConsoleApp\\obj\\",
+      "outputPath": "D:\\unik\\ПІС\\project\\SOLIDConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Грибной Властелин\\AppData\\Roaming\\NuGet\\NuGet.Config",
