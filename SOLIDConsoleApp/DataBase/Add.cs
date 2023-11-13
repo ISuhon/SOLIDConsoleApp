@@ -8,5 +8,6 @@ namespace SOLIDConsoleApp.DataBase
 {
     internal class Add
     {
+
     }
 }
