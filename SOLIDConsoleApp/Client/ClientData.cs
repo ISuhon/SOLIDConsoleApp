@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Numerics;
 using System.Text;
@@ -54,12 +55,26 @@ namespace SOLIDConsoleApp.Client
 
             InputHelper.inputWait();
         }
+
+        public ClientData(int ID, string? firstName, string? middleName, string? lastName, string? phone, // This constructor just for testing
+            string? email)
+        {
+            this.Id = ID;
+            this.FirstName = firstName;
+            this.MiddleName = middleName;
+            this.LastName = lastName;
+            this.PhoneNumber = phone;
+            this.Email = email;
+        }
+
         public int Id { get; set; } // Primary key
         public string? FirstName { get; set; }
         public string? MiddleName { get; set; }
         public string? LastName { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Email { get; set; }
+
+        [NotMapped]
         public IClientBalance? Balance { get; set; }
         public override string ToString()
         {

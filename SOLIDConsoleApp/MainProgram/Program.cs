@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static SOLIDConsoleApp.MainProgram.EmployeeOptions;
 using static SOLIDConsoleApp.MainProgram.ClientOptions;
+using SOLIDConsoleApp.DataBase;
 
 namespace SOLIDConsoleApp.MainProgram
 {
@@ -16,37 +17,54 @@ namespace SOLIDConsoleApp.MainProgram
 
         public static void Main(string[] args)
         {
-            while (true)
+            using(ClientContext clientDB = new ClientContext())
             {
+                ClientData client1 = new ClientData(0, "Vasya", "Popovich", "Pupkin", "+380678954756", "vasyapupkin@gmail.com");
+                ClientData client2 = new ClientData(1, "Pedro", "Popovich", "Pupkin", "+380678954623", "pedropupkin@gmail.com");
 
-                Console.WriteLine("Hello, User, choose who you are: \n" +
-                    "1. I'm a employee\n" +
-                    "2. I'm a client\n" +
-                    "0. Exit the program");
+                clientDB.Clients.Add(client1);
+                clientDB.Clients.Add(client2);
+                clientDB.SaveChanges();
+                Console.WriteLine("Clients added to database successfully");
 
-                switch (Console.ReadKey().KeyChar)
+                var clients = clientDB.Clients;
+                Console.WriteLine("List of clients from db : ");
+                foreach(var client in clients)
                 {
-                    case '1':
-                        Console.Clear();
-                        employeeOptions();
-                        break;
-
-                    case '2':
-                        Console.Clear();
-                        clientOptions();
-                        break;
-                    case '0':
-                        return;
-
-                    default:
-                        Console.WriteLine("\nIncorrect symbol. Try again");
-                        System.Threading.Thread.Sleep(1000);
-                        Console.Clear();
-                        break;
+                    Console.WriteLine(client);
                 }
-
-
             }
+            //while (true)
+            //{
+
+            //    Console.WriteLine("Hello, User, choose who you are: \n" +
+            //        "1. I'm a employee\n" +
+            //        "2. I'm a client\n" +
+            //        "0. Exit the program");
+
+            //    switch (Console.ReadKey().KeyChar)
+            //    {
+            //        case '1':
+            //            Console.Clear();
+            //            employeeOptions();
+            //            break;
+
+            //        case '2':
+            //            Console.Clear();
+            //            clientOptions();
+            //            break;
+            //        case '0':
+            //            return;
+
+            //        default:
+            //            Console.WriteLine("\nIncorrect symbol. Try again");
+            //            System.Threading.Thread.Sleep(1000);
+            //            Console.Clear();
+            //            break;
+            //    }
+
+
+            //}
         }
 
         
