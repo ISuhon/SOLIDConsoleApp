@@ -41,7 +41,9 @@ namespace SOLIDConsoleApp.Client
         public int CVVcode { get; set; }
         public int PIN { get; set; }
         public double Fortune { get; set; }
-        public TransactionHistory? transactions { get; set; }
+        public ITransactionHistory? transactions { get; set; }
+        public int BalanceID { get; set; } // Foreign key
+        public int CreditCardID { get; set; } // Primary key
         
         public override string? ToString()
         {

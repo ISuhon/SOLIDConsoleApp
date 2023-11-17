@@ -12,6 +12,8 @@ namespace SOLIDConsoleApp.Client
         public IListofCreditCards? creditCards { get; set; }
         public string? Surname { get; set; }
         public ICredits? Credits { get; set; }
+        public int BalanceID { get; set; } // Primary key
+        public int ClientID { get; set; } // Foreign key
 
         public void setSurname(string? surname)
         {

@@ -14,6 +14,6 @@ namespace SOLIDConsoleApp.Interfaces
         public int CVVcode { get; set; }
         public int PIN { get; set; }
         public double Fortune { get; set; }
-        public TransactionHistory? transactions { get; set; }
+        public ITransactionHistory? transactions { get; set; }
     }
 }

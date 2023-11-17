@@ -15,6 +15,7 @@ namespace SOLIDConsoleApp.Client
         internal event Message? _message;
         public ClientData() 
         {
+            
             this.Id = 0;
             this.FirstName = null;
             this.MiddleName = null;
@@ -53,7 +54,7 @@ namespace SOLIDConsoleApp.Client
 
             InputHelper.inputWait();
         }
-        public int Id { get; set; }
+        public int Id { get; set; } // Primary key
         public string? FirstName { get; set; }
         public string? MiddleName { get; set; }
         public string? LastName { get; set; }

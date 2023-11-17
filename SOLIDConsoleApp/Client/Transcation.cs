@@ -25,6 +25,8 @@ namespace SOLIDConsoleApp.Client
         public int ReceiverID { get; set; }
         public DateTime TransactionDate { get; set; }
         public double TransactionAmount { get; set;}
+        public int CreditCardID { get; set; } // Foreign key
+        public int TransactionID { get; set; } // Primary key
 
         public override string? ToString()
         {

@@ -24,6 +24,8 @@ namespace SOLIDConsoleApp.Client
         public CreditType CreditType { get; set; }
         public CreditStatus CreditStatus { get; set; }
         public DateTime CreditEndDate { get; set;  }
+        public int BalanceID { get; set; } // Foreign key
+        public int CreditID { get; set; } // Primary key
 
         public override string? ToString()
         {
