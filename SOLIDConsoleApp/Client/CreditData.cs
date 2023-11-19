@@ -1,6 +1,8 @@
 ﻿using SOLIDConsoleApp.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +27,8 @@ namespace SOLIDConsoleApp.Client
         public CreditStatus CreditStatus { get; set; }
         public DateTime CreditEndDate { get; set;  }
         public int BalanceID { get; set; } // Foreign key
+
+        [Key, Column(Order = 0)]
         public int CreditID { get; set; } // Primary key
 
         public override string? ToString()

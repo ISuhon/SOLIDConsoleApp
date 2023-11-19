@@ -11,10 +11,13 @@ namespace SOLIDConsoleApp.DataBase
     internal class ClientContext : DbContext
     {
         public DbSet<ClientData> Clients => Set<ClientData>();
-        
+
         public ClientContext() => Database.EnsureCreated();
 
-        private readonly string _path = @"Server=localhost;Database=ConsoleBank;Trusted_Connection=True;TrustServerCertificate=true;";
+        private readonly string _path = @"Server=DESKTOP-GN81J6L\SQLEXPRESS;
+                                            Database=CodeFirstBank;
+                                            Trusted_Connection=True;
+                                            TrustServerCertificate=true;";
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

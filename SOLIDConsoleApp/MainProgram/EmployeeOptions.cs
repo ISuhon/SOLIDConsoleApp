@@ -87,8 +87,6 @@ namespace SOLIDConsoleApp.MainProgram
 
             balance.Credits = new Credits();
 
-            balance.creditCards = new ClientCreditCards();
-
             return balance;
         }
 

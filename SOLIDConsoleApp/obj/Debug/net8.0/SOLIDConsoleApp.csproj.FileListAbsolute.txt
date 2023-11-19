@@ -91,4 +91,3 @@ D:\unik\ПІС\project\SOLIDConsoleApp\obj\Debug\net8.0\refint\SOLIDConsoleApp.d
 D:\unik\ПІС\project\SOLIDConsoleApp\obj\Debug\net8.0\SOLIDConsoleApp.pdb
 D:\unik\ПІС\project\SOLIDConsoleApp\obj\Debug\net8.0\SOLIDConsoleApp.genruntimeconfig.cache
 D:\unik\ПІС\project\SOLIDConsoleApp\obj\Debug\net8.0\ref\SOLIDConsoleApp.dll
-D:\unik\ПІС\project\SOLIDConsoleApp\bin\Debug\net8.0\SOLIDConsoleApp.dll.config

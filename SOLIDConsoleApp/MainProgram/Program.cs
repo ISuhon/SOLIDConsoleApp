@@ -19,11 +19,10 @@ namespace SOLIDConsoleApp.MainProgram
         {
             using(ClientContext clientDB = new ClientContext())
             {
-                ClientData client1 = new ClientData(0, "Vasya", "Popovich", "Pupkin", "+380678954756", "vasyapupkin@gmail.com");
-                ClientData client2 = new ClientData(1, "Pedro", "Popovich", "Pupkin", "+380678954623", "pedropupkin@gmail.com");
+                ClientData client1 = new ClientData(0, "Vasya", "Popovich", "Pupkin", "+380678954756", "vasyapupkin@gmail.com", 0);
+                ClientData client2 = new ClientData(1, "Pedro", "Popovich", "Pupkin", "+380678954623", "pedropupkin@gmail.com", 1);
 
                 clientDB.Clients.Add(client1);
-                clientDB.Clients.Add(client2);
                 clientDB.SaveChanges();
                 Console.WriteLine("Clients added to database successfully");
 
