@@ -11,8 +11,32 @@ namespace SOLIDConsoleApp.DataBase
     internal class ClientContext : DbContext
     {
         public DbSet<ClientData> Clients => Set<ClientData>();
+        private readonly ClientContext _context;
 
-        public ClientContext() => Database.EnsureCreated();
+        public ClientContext(ClientContext context)
+        {
+            this._context=context;
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ClientData>()
+                .Property(c => c.FirstName)
+                .HasMaxLength(20)
+                .IsRequired();
+
+            modelBuilder.Entity<ClientData>()
+                .Property(c => c.MiddleName)
+                .HasMaxLength(30)
+                .IsRequired(false);
+
+            modelBuilder.Entity<ClientData>()
+                .Property(c => c.LastName)
+                .HasMaxLength(50)
+                .IsRequired();
+        }
+
+        
 
         private readonly string _path = @"Server=DESKTOP-GN81J6L\SQLEXPRESS;
                                             Database=CodeFirstBank;

@@ -11,9 +11,11 @@ namespace SOLIDConsoleApp.Client
 {
     internal class ClientBalance : SOLIDConsoleApp.Interfaces.IClientBalance
     {
-        [ForeignKey("CreditCardID")]
+        [NotMapped]
         public IListofCreditCards? creditCards { get; set; }
         public string? Surname { get; set; }
+
+        [NotMapped]
         public ICredits? Credits { get; set; }
 
         [Key]

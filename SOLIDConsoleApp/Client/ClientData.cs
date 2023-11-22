@@ -82,14 +82,8 @@ namespace SOLIDConsoleApp.Client
 
         [Key]
         public int Id { get; set; } // Primary key
-
-        [MaxLength(20)]
         public string? FirstName { get; set; }
-
-        [MaxLength(30)]
         public string? MiddleName { get; set; }
-
-        [MaxLength(50)]
         public string? LastName { get; set; }
 
         [MaxLength(15)]
