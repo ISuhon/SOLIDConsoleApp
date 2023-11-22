@@ -1,10 +1,13 @@
 ﻿using SOLIDConsoleApp.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace SOLIDConsoleApp.Client
 {
@@ -41,8 +44,13 @@ namespace SOLIDConsoleApp.Client
         public int CVVcode { get; set; }
         public int PIN { get; set; }
         public double Fortune { get; set; }
+
+        [NotMapped]
         public ITransactionHistory? transactions { get; set; }
+
         public int BalanceID { get; set; } // Foreign key
+
+        [Key]
         public int CreditCardID { get; set; } // Primary key
         
         public override string? ToString()

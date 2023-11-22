@@ -23,12 +23,13 @@ namespace SOLIDConsoleApp.DataBase
             modelBuilder.Entity<ClientData>()
                 .Property(c => c.FirstName)
                 .HasMaxLength(20)
-                .IsRequired();
+                .IsRequired()
+                .HasDefaultValue("Vasya");
 
             modelBuilder.Entity<ClientData>()
                 .Property(c => c.MiddleName)
                 .HasMaxLength(30)
-                .IsRequired(false);
+                .HasDefaultValue("Popovich");
 
             modelBuilder.Entity<ClientData>()
                 .Property(c => c.LastName)
@@ -38,14 +39,14 @@ namespace SOLIDConsoleApp.DataBase
 
         
 
-        private readonly string _path = @"Server=DESKTOP-GN81J6L\SQLEXPRESS;
-                                            Database=CodeFirstBank;
-                                            Trusted_Connection=True;
-                                            TrustServerCertificate=true;";
+        //private readonly string _path = @"Server=DESKTOP-GN81J6L\SQLEXPRESS;
+        //                                    Database=CodeFirstBank;
+        //                                    Trusted_Connection=True;
+        //                                    TrustServerCertificate=true;";
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(this._path);
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(this._path);
+        //}
     }
 }
