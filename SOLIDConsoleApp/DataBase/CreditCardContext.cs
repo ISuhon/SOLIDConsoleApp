@@ -22,16 +22,25 @@ namespace SOLIDConsoleApp.DataBase
         {
             modelBuilder.Entity<ClientCreditCard>()
                 .Property(c => c.CardNumber)
-                .HasMaxLength(12)
-                .IsRequired();
+                .HasMaxLength(16)
+                .IsRequired()
+                .HasDefaultValue("6666666666666666");
 
             modelBuilder.Entity<ClientCreditCard>()
                 .Property(c => c.CVVcode)
                 .HasMaxLength(3)
-                .IsRequired();
+                .IsRequired()
+                .HasDefaultValue(555);
 
             modelBuilder.Entity<ClientCreditCard>()
+                .Property(c => c.Fortune)
+                .IsRequired(false);
 
+            modelBuilder.Entity<ClientCreditCard>()
+                .Property(c => c.PIN)
+                .HasMaxLength(4)
+                .IsRequired()
+                .HasDefaultValue(1337);
         }
     }
 }

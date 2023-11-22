@@ -31,6 +31,9 @@ namespace SOLIDConsoleApp.DataBase
 
             services.AddDbContext<ClientContext>(
                 option => option.UseSqlServer(this._configuration.GetConnectionString("CreditContext")));
+
+            services.AddDbContext<ClientContext>(
+                option => option.UseSqlServer(this._configuration.GetConnectionString("TransactionContext")));
         }
     }
 }

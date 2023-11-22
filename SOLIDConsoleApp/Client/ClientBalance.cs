@@ -12,7 +12,7 @@ namespace SOLIDConsoleApp.Client
     internal class ClientBalance : SOLIDConsoleApp.Interfaces.IClientBalance
     {
         [NotMapped]
-        public List<ICreditCard>? creditCards { get; set; }
+        public IListofCreditCards? creditCards { get; set; }
         public string? Surname { get; set; }
 
         [NotMapped]
@@ -24,22 +24,6 @@ namespace SOLIDConsoleApp.Client
         public void setSurname(string? surname)
         {
             this.Surname = surname;
-        }
-
-        public List<ICreditCard>? getCreditCards()
-        {
-            return this.creditCards;
-        }
-        public void addCreditCard(ICreditCard creditCard)
-        {
-            this.creditCards?.Add(creditCard);
-        }
-        public void showCreditCards() 
-        {
-            foreach(ICreditCard? creditCard in this.creditCards)
-            {
-                Console.WriteLine(creditCard);
-            }
         }
 
         public override string ToString()
