@@ -34,6 +34,7 @@ namespace SOLIDConsoleApp.Client
 
         [Key]
         public int CreditID { get; set; } // Primary key
+        public ClientBalance Balance { get; set; }
 
         public override string? ToString()
         {

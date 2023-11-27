@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.DataBase.ContextFactory
 {
-    internal class BalanceContextFactory
+    internal class BankContextFactory
     {
-        public BalanceContext CreateDBContext(string[] args)
+        public BankContext CreateDBContext(string[] args)
         {
-            var optionsBuilder = new DbContextOptionsBuilder<BalanceContext>();
+            var optionsBuilder = new DbContextOptionsBuilder<BankContext>();
 
             IConfigurationRoot config = Configurations.GetConfigurationBuilder().Build();
 
-            string? connectionString = config.GetConnectionString("ClientContext");
+            string? connectionString = config.GetConnectionString("BankContext");
             optionsBuilder.UseSqlServer(connectionString);
-            return new BalanceContext(optionsBuilder.Options);
+            return new BankContext(optionsBuilder.Options);
         }
     }
 }

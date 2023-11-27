@@ -22,7 +22,17 @@ namespace SOLIDConsoleApp.Client
         [ForeignKey("ClientData")]
         public int BalanceID { get; set; } // Primary key
 
+        [NotMapped]
         public IClientData? ClientData { get; set; }
+
+        public ICollection<ICreditCard>? CreditCardsForDB { get; set; }
+        public ICollection<ICreditData>? CreditsForDB { get; set; }
+
+        public ClientBalance()
+        {
+            this.CreditCardsForDB = creditCards?.getCreditCards();
+            this.CreditsForDB = Credits?.getCredits();
+        }
 
         public void setSurname(string? surname)
         {

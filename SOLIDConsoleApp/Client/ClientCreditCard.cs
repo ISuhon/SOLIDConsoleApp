@@ -52,6 +52,8 @@ namespace SOLIDConsoleApp.Client
 
         [Key]
         public int CreditCardID { get; set; } // Primary key
+        public ClientBalance Balance { get; set; }
+        public ICollection<Transaction> TransactionsForDB { get; set; }
         
         public override string? ToString()
         {

@@ -20,7 +20,7 @@ namespace SOLIDConsoleApp.DataBase.Mapping
             this.Property(x => x.MiddleName).HasColumnName("MiddleName");
             this.Property(x => x.LastName).HasColumnName("LastName");
             this.Property(x => x.PhoneNumber).HasColumnName("PhoneNumber");
-            this.Property(x => x.Email).HasColumnName("Email");
+            this.Property(x => x.Email).HasColumnName("Id");
         }
     }
 }
