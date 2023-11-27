@@ -12,13 +12,7 @@ namespace SOLIDConsoleApp.DataBase
     internal class BalanceContext : DbContext
     {
         DbSet<ClientBalance> Balances => Set<ClientBalance>();
-        private string _connectionString;
-
-        public BalanceContext() => Database.EnsureCreated();
-        public BalanceContext(string connectionString)
-        {
-            this._connectionString = connectionString;
-        }
+        public BalanceContext(DbContextOptions<BalanceContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

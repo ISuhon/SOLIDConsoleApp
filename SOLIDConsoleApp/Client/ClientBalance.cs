@@ -19,7 +19,10 @@ namespace SOLIDConsoleApp.Client
         public ICredits? Credits { get; set; }
 
         [Key]
+        [ForeignKey("ClientData")]
         public int BalanceID { get; set; } // Primary key
+
+        public IClientData? ClientData { get; set; }
 
         public void setSurname(string? surname)
         {

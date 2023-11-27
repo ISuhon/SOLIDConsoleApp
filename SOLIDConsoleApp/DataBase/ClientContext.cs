@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.Extensions.Logging;
 using SOLIDConsoleApp.Client;
 
 namespace SOLIDConsoleApp.DataBase
@@ -11,17 +13,12 @@ namespace SOLIDConsoleApp.DataBase
     internal class ClientContext : DbContext
     {
         public DbSet<ClientData> Clients => Set<ClientData>();
-        private string _connectionString;
 
-        public ClientContext() => Database.EnsureCreated(); 
-        public ClientContext(string connectionString)
-        {
-            this._connectionString = connectionString;
-        }
+        public ClientContext(DbContextOptions<ClientContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(this._connectionString);
+            optionsBuilder.LogTo(Console.WriteLine(), new[] { RelationalEventId.CommandExecuted });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

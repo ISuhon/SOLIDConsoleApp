@@ -68,18 +68,6 @@ namespace SOLIDConsoleApp.Client
             this.Email = email;
         }
 
-        public ClientData(int ID, string? firstName, string? middleName, string? lastName, string? phone, // This constructor just for testing
-            string? email, int BalanceID)
-        {
-            this.Id = ID;
-            this.FirstName = firstName;
-            this.MiddleName = middleName;
-            this.LastName = lastName;
-            this.PhoneNumber = phone;
-            this.Email = email;
-            this.BalanceID = BalanceID;
-        }
-
         [Key]
         public int Id { get; set; } // Primary key
         public string? FirstName { get; set; }
@@ -92,10 +80,6 @@ namespace SOLIDConsoleApp.Client
         [MaxLength(50)]
         public string? Email { get; set; }
 
-        public int BalanceID { get; set; }
-
-        [NotMapped]
-        [ForeignKey("BalanceID")]
         public IClientBalance? Balance { get; set; }
         public override string ToString()
         {

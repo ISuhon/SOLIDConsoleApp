@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using SOLIDConsoleApp.Client;
 using System;
 using System.Collections.Generic;
@@ -11,18 +12,11 @@ namespace SOLIDConsoleApp.DataBase
     internal class CreditCardContext : DbContext
     {
         DbSet<ClientCreditCard> CreditCards => Set<ClientCreditCard>();
-        private string _connectionString;
-
-        public CreditCardContext() => Database.EnsureCreated();
-
-        CreditCardContext(string connectionString)
-        {
-            this._connectionString = connectionString;
-        }
+        public CreditCardContext(DbContextOptions<CreditCardContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(this._connectionString);
+            optionsBuilder.LogTo(Console.WriteLine(), new[] { RelationalEventId.CommandExecuted });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
