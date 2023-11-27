@@ -11,11 +11,18 @@ namespace SOLIDConsoleApp.DataBase
     internal class CreditContext : DbContext
     {
         DbSet<CreditData> Credits => Set<CreditData>();
-        private readonly CreditContext _context;
+        private string _connectionString;
 
-        public CreditContext(CreditContext context)
+        public CreditContext() => Database.EnsureCreated();
+
+        CreditContext(string connectionString)
         {
-            this._context=context;
+            this._connectionString = connectionString;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(this._connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

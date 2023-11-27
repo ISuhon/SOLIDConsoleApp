@@ -5,6 +5,8 @@ using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace SOLIDConsoleApp.Client
 {
@@ -26,6 +28,8 @@ namespace SOLIDConsoleApp.Client
         public DateTime TransactionDate { get; set; }
         public double TransactionAmount { get; set;}
         public int CreditCardID { get; set; } // Foreign key
+
+        [Key]
         public int TransactionID { get; set; } // Primary key
 
         public override string? ToString()

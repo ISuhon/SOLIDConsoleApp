@@ -11,11 +11,17 @@ namespace SOLIDConsoleApp.DataBase
     internal class ClientContext : DbContext
     {
         public DbSet<ClientData> Clients => Set<ClientData>();
-        private readonly ClientContext _context;
+        private string _connectionString;
 
-        public ClientContext(ClientContext context)
+        public ClientContext() => Database.EnsureCreated(); 
+        public ClientContext(string connectionString)
         {
-            this._context=context;
+            this._connectionString = connectionString;
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(this._connectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -38,15 +44,5 @@ namespace SOLIDConsoleApp.DataBase
         }
 
         
-
-        //private readonly string _path = @"Server=DESKTOP-GN81J6L\SQLEXPRESS;
-        //                                    Database=CodeFirstBank;
-        //                                    Trusted_Connection=True;
-        //                                    TrustServerCertificate=true;";
-
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    optionsBuilder.UseSqlServer(this._path);
-        //}
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
 using static SOLIDConsoleApp.MainProgram.EmployeeOptions;
 using static SOLIDConsoleApp.MainProgram.ClientOptions;
 using SOLIDConsoleApp.DataBase;
@@ -14,6 +15,8 @@ namespace SOLIDConsoleApp.MainProgram
     internal class Program
     {
         internal static List<IClientData> _clients = new List<IClientData>();
+
+       
 
         public static void Main(string[] args)
         {

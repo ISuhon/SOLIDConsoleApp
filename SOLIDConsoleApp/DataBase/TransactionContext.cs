@@ -11,13 +11,19 @@ namespace SOLIDConsoleApp.DataBase
     internal class TransactionContext : DbContext
     {
         DbSet<Transaction> Transactions => Set<Transaction>();
-        private readonly TransactionContext _transactions;
+        private string _connectionString;
 
-        public TransactionContext(TransactionContext transactions)
+        public TransactionContext() => Database.EnsureCreated();
+
+        TransactionContext(string connectionString)
         {
-            this._transactions=transactions;
+            this._connectionString = connectionString;
         }
 
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(this._connectionString);
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CreditData>()
