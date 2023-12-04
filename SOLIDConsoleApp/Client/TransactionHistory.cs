@@ -11,7 +11,7 @@ namespace SOLIDConsoleApp.Client
     {
         List<ITransaction> transactions = new List<ITransaction>();
 
-        public List<ITransaction> GetTransactions() 
+        public List<ITransaction> getTransactions() 
         { 
             return this.transactions; 
         }

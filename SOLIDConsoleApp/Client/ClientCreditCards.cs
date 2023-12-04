@@ -34,5 +34,10 @@ namespace SOLIDConsoleApp.Client
         {
             this.creditCards.Add(creditCard);
         }
+
+        public ICreditCard getCreditCard(int index)
+        {
+            return this.creditCards[index];
+        }
     }
 }

@@ -20,18 +20,18 @@ namespace SOLIDConsoleApp.Client
 
         [Key]
         [ForeignKey("ClientData")]
-        public int BalanceID { get; set; } // Primary key
+        public int Id { get; set; } // Primary key
 
         [NotMapped]
         public IClientData? ClientData { get; set; }
 
-        public ICollection<ICreditCard>? CreditCardsForDB { get; set; }
-        public ICollection<ICreditData>? CreditsForDB { get; set; }
+        public List<ClientCreditCard>? CreditCardsForDB { get; set; }
+        public List<CreditData>? CreditsForDB { get; set; }
 
         public ClientBalance()
         {
-            this.CreditCardsForDB = creditCards?.getCreditCards();
-            this.CreditsForDB = Credits?.getCredits();
+            this.CreditCardsForDB = creditCards?.getCreditCards().Cast<ClientCreditCard>().ToList();
+            this.CreditsForDB = Credits?.getCredits().Cast<CreditData>().ToList();
         }
 
         public void setSurname(string? surname)
@@ -41,7 +41,7 @@ namespace SOLIDConsoleApp.Client
 
         public override string ToString()
         {
-            return $"ID : {this.BalanceID}\n" +
+            return $"ID : {this.Id}\n" +
                 $"Surname : {this.Surname}\n" +
                 $"\n========================\n";
         }

@@ -15,6 +15,6 @@ namespace SOLIDConsoleApp.Interfaces
         public string? LastName { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Email { get; set; }
-        public IClientBalance? Balance { get; set; }
+        public IClientBalance? ClientBalance { get; set; }
     }
 }

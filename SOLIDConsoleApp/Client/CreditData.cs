@@ -33,7 +33,7 @@ namespace SOLIDConsoleApp.Client
         public int BalanceID { get; set; } // Foreign key
 
         [Key]
-        public int CreditID { get; set; } // Primary key
+        public int Id { get; set; } // Primary key
         public ClientBalance Balance { get; set; }
 
         public override string? ToString()

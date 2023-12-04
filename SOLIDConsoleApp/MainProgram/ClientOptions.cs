@@ -63,7 +63,7 @@ namespace SOLIDConsoleApp.MainProgram
                 {
                     case '1':
                         Console.Clear();
-                        client?.Balance?.creditCards?.showCreditCards();
+                        client?.ClientBalance?.creditCards?.showCreditCards();
                         break;
 
                     case '2':
@@ -73,7 +73,7 @@ namespace SOLIDConsoleApp.MainProgram
 
                     case '3':
                         Console.Clear();
-                        client?.Balance?.Credits?.showCredits();
+                        client?.ClientBalance?.Credits?.showCredits();
                         break;
                     case '0':
                         return;
@@ -87,18 +87,18 @@ namespace SOLIDConsoleApp.MainProgram
         {
             int choose = 0;
             Console.WriteLine("Which credit card you want to choose:\n");
-            client?.Balance?.creditCards?.showCreditCards();
+            client?.ClientBalance?.creditCards?.showCreditCards();
 
             choose = inputInt();
 
             while (choose < 0 || 
-                choose > client?.Balance?.creditCards?.getCreditCards().Count)
+                choose > client?.ClientBalance?.creditCards?.getCreditCards().Count)
             {
                 Console.WriteLine("Incorrect input. Try again");
                 choose = inputInt();
             }
 
-            creditCard = client?.Balance?.creditCards?.getCreditCards()[choose];
+            creditCard = client?.ClientBalance?.creditCards?.getCreditCards()[choose];
 
             actionsWithCreditCard();
         }
@@ -151,13 +151,13 @@ namespace SOLIDConsoleApp.MainProgram
 
                 foreach(IClientData client in _clients)
                 {
-                    for(int i = 0; i < client.Balance.creditCards.getCreditCards().Count; i++)
+                    for(int i = 0; i < client.ClientBalance.creditCards.getCreditCards().Count; i++)
                     {
-                        if (recipientCardNumber == client.Balance.creditCards.getCreditCards()[i].CardNumber)
+                        if (recipientCardNumber == client.ClientBalance.creditCards.getCreditCards()[i].CardNumber)
                         {
                             endOfCycle = true;
                             recipient = client;
-                            recipientCreditCard = client.Balance.creditCards.getCreditCards()[i];
+                            recipientCreditCard = client.ClientBalance.creditCards.getCreditCards()[i];
                             break;
                         }
                     }

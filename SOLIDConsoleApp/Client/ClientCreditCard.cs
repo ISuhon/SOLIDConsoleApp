@@ -16,14 +16,7 @@ namespace SOLIDConsoleApp.Client
         internal event Message _message;
         public ClientCreditCard()
         {
-            this.CardNumber = null;
-            this.ExpirationDate = DateTime.Now;
-            this.CVVcode = 0;
-            this.PIN = 0;
-            this.Fortune = 0.0;
-
-            this._message += MessageOfCreatedCreditCard;
-            this._message("Created new credit card with standard data");
+            this.TransactionsForDB = transactions?.getTransactions().Cast<Transaction>().ToList();
         }
 
         public ClientCreditCard(string? cardNumber, DateTime expirationDate, int CVV, int pin, double fortune, TransactionHistory transactions) 
@@ -48,12 +41,12 @@ namespace SOLIDConsoleApp.Client
         [NotMapped]
         public ITransactionHistory? transactions { get; set; }
 
-        public int BalanceID { get; set; } // Foreign key
+        public int BalanceId { get; set; } // Foreign key
 
         [Key]
-        public int CreditCardID { get; set; } // Primary key
+        public int? Id { get; set; } // Primary key
         public ClientBalance Balance { get; set; }
-        public ICollection<Transaction> TransactionsForDB { get; set; }
+        public List<Transaction>? TransactionsForDB { get; set; }
         
         public override string? ToString()
         {

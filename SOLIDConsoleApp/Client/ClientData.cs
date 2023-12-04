@@ -24,7 +24,7 @@ namespace SOLIDConsoleApp.Client
             this.LastName = null;
             this.PhoneNumber = null;
             this.Email = null;
-            this.Balance = null;
+            this.ClientBalance = null;
 
             this._message += MessageOfCreatedClient;
             this._message("Successfully created client with standard data");
@@ -49,7 +49,7 @@ namespace SOLIDConsoleApp.Client
             this.LastName = lastName;
             this.PhoneNumber = phone;
             this.Email = email;
-            this.Balance = clientBalance;
+            this.ClientBalance = clientBalance;
 
             this._message += MessageOfCreatedClient;
             this._message("Successfully created client : \n" + this);
@@ -79,8 +79,10 @@ namespace SOLIDConsoleApp.Client
 
         [MaxLength(50)]
         public string? Email { get; set; }
+        [NotMapped]
+        public IClientBalance? ClientBalance { get; set; }
 
-        public IClientBalance? Balance { get; set; }
+        public ClientBalance? Balance { get; set; }
         public override string ToString()
         {
             return $"ID : {Id}\n" +

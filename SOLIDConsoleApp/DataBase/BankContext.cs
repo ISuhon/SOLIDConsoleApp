@@ -21,7 +21,7 @@ namespace SOLIDConsoleApp.DataBase
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.LogTo(Console.WriteLine(), new[] { RelationalEventId.CommandExecuted });
+            optionsBuilder.LogTo(Console.WriteLine, new[] { RelationalEventId.CommandExecuted });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -62,10 +62,6 @@ namespace SOLIDConsoleApp.DataBase
                 .HasDefaultValue(555);
 
             modelBuilder.Entity<ClientCreditCard>()
-                .Property(c => c.Fortune)
-                .IsRequired(false);
-
-            modelBuilder.Entity<ClientCreditCard>()
                 .Property(c => c.PIN)
                 .HasMaxLength(4)
                 .IsRequired()
@@ -84,9 +80,31 @@ namespace SOLIDConsoleApp.DataBase
             modelBuilder.Entity<CreditData>()
                 .Property(c => c.CreditType)
                 .HasDefaultValue(CreditType.REVOLVING_CREDIT);
+        }
 
-         
-            
+        public DbSet<ClientData> getClients()
+        {
+            return this.Clients;
+        }
+
+        public DbSet<ClientBalance> getBalances()
+        {
+            return this.Balances;
+        }
+
+        public DbSet<ClientCreditCard> getCreditCards()
+        {
+            return this.CreditCards;
+        }
+
+        public DbSet<CreditData> getCredits()
+        {
+            return this.Credits;
+        }
+
+        public DbSet<Transaction> getTransactions()
+        {
+            return this.Transactions;
         }
     }
 }
