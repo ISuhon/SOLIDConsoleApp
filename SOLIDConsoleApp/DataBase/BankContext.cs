@@ -10,13 +10,13 @@ using SOLIDConsoleApp.Interfaces;
 
 namespace SOLIDConsoleApp.DataBase
 {
-    internal class BankContext : DbContext
+    public class BankContext : DbContext
     {
-        DbSet<ClientBalance> Balances => Set<ClientBalance>();
-        DbSet<ClientData> Clients => Set<ClientData>();
-        DbSet<ClientCreditCard> CreditCards => Set<ClientCreditCard>();
-        DbSet<CreditData> Credits => Set<CreditData>();
-        DbSet<Transaction> Transactions => Set<Transaction>();
+        public DbSet<ClientBalance> Balances => Set<ClientBalance>();
+        public DbSet<ClientData> Clients => Set<ClientData>();
+        public DbSet<ClientCreditCard> CreditCards => Set<ClientCreditCard>();
+        public DbSet<CreditData> Credits => Set<CreditData>();
+        public DbSet<Transaction> Transactions => Set<Transaction>();
         public BankContext(DbContextOptions<BankContext> options) : base(options) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

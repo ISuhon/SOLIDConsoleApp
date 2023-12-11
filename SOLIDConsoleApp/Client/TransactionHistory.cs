@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Client
 {
-    internal class TransactionHistory : ITransactionHistory
+    public class TransactionHistory : ITransactionHistory
     {
         List<ITransaction> transactions = new List<ITransaction>();
 

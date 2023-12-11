@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Interfaces
 {
-    internal interface ITransactionHistory
+    public interface ITransactionHistory
     {
         public List<ITransaction> getTransactions();
 

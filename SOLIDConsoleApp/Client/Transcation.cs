@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SOLIDConsoleApp.Client
 {
-    internal class Transaction : ITransaction
+    public class Transaction : ITransaction
     {
         internal event Message _message;
         public Transaction(string? payee, int receiverID, DateTime transactionDate, double transactionAmount) 
@@ -20,8 +20,8 @@ namespace SOLIDConsoleApp.Client
             this.TransactionDate = transactionDate; 
             this.TransactionAmount = transactionAmount;
 
-            this._message += MessageOfSuccessfulTransaction;
-            this._message("Transaction done successful");
+            //this._message += MessageOfSuccessfulTransaction;
+            //this._message("Transaction done successful");
         }
         public string? Payee { get; set; }
         public int ReceiverID { get; set; }

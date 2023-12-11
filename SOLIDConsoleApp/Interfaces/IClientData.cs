@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Interfaces
 {
-    internal interface IClientData
+    public interface IClientData
     {
         public int Id { get; set; }
         public string? FirstName { get; set; }

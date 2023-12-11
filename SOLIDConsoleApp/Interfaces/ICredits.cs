@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Interfaces
 {
-    internal interface ICredits : IEnumerable<ICredits>
+    public interface ICredits : IEnumerable<ICredits>
     {
         List<ICreditData> getCredits();
         public void addCredit(ICreditData credit);

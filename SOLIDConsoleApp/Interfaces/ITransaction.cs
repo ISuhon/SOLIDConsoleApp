@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Interfaces
 {
-    internal interface ITransaction
+    public interface ITransaction
     {
         public string? Payee { get; set; }
         public int ReceiverID { get; set; }

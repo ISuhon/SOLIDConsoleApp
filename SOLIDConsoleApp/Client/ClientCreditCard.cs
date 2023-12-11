@@ -11,7 +11,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SOLIDConsoleApp.Client
 {
-    internal class ClientCreditCard : ICreditCard
+    public class ClientCreditCard : ICreditCard
     {
         internal event Message _message;
         public ClientCreditCard()
@@ -28,8 +28,8 @@ namespace SOLIDConsoleApp.Client
             this.Fortune = fortune;
             this.transactions = transactions;
 
-            this._message += MessageOfCreatedCreditCard;
-            this._message("Created new credit card : \n" + this);
+            //this._message += MessageOfCreatedCreditCard;
+            //this._message("Created new credit card : \n" + this);
         }
 
         public string? CardNumber { get; set; }

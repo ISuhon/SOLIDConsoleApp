@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Client
 {
-    internal class ClientCreditCards : IListofCreditCards
+    public class ClientCreditCards : IListofCreditCards
     {
         private List<ICreditCard> creditCards = new List<ICreditCard>();
 

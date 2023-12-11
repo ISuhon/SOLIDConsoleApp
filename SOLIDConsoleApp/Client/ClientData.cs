@@ -12,7 +12,7 @@ using SOLIDConsoleApp.MainProgram;
 namespace SOLIDConsoleApp.Client
 {
     internal delegate void Message(string message);
-    internal class ClientData : IClientData
+    public class ClientData : IClientData
     {
         internal event Message? _message;
         public ClientData() 
@@ -26,19 +26,19 @@ namespace SOLIDConsoleApp.Client
             this.Email = null;
             this.ClientBalance = null;
 
-            this._message += MessageOfCreatedClient;
-            this._message("Successfully created client with standard data");
+            //this._message += MessageOfCreatedClient;
+            //this._message("Successfully created client with standard data");
 
-            InputHelper.inputWait();
+            //InputHelper.inputWait();
         }
         public ClientData(int ID) 
         {
             this.Id = ID;
 
-            this._message += MessageOfCreatedClient;
-            this._message("Successfully created client with ID");
+            //this._message += MessageOfCreatedClient;
+            //this._message("Successfully created client with ID");
 
-            InputHelper.inputWait();
+            //InputHelper.inputWait();
         }
         public ClientData(int ID, string? firstName, string? middleName, string? lastName, string? phone, 
             string? email, ClientBalance? clientBalance) 
@@ -51,10 +51,10 @@ namespace SOLIDConsoleApp.Client
             this.Email = email;
             this.ClientBalance = clientBalance;
 
-            this._message += MessageOfCreatedClient;
-            this._message("Successfully created client : \n" + this);
+            //this._message += MessageOfCreatedClient;
+            //this._message("Successfully created client : \n" + this);
 
-            InputHelper.inputWait();
+            //InputHelper.inputWait();
         }
 
         public ClientData(int ID, string? firstName, string? middleName, string? lastName, string? phone, // This constructor just for testing

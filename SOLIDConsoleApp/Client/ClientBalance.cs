@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOLIDConsoleApp.Client
 {
-    internal class ClientBalance : SOLIDConsoleApp.Interfaces.IClientBalance
+    public class ClientBalance : SOLIDConsoleApp.Interfaces.IClientBalance
     {
         [NotMapped]
         public IListofCreditCards? creditCards { get; set; }

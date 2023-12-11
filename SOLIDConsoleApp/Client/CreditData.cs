@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Client
 {
-    internal class CreditData : ICreditData
+    public class CreditData : ICreditData
     {
         internal event Message _message;
         public CreditData(double creditSum, CreditType creditType, CreditStatus creditStatus, DateTime creditEndDate)
@@ -19,8 +19,8 @@ namespace SOLIDConsoleApp.Client
             this.CreditStatus = creditStatus;
             this.CreditEndDate = creditEndDate;
 
-            this._message += MessageOfCreatedCredit;
-            this._message("Created credit : " + this);
+            //this._message += MessageOfCreatedCredit;
+            //this._message("Created credit : " + this);
         }
         public double CreditSum { get; set; }
 
@@ -48,12 +48,12 @@ namespace SOLIDConsoleApp.Client
         void MessageOfCreatedCredit(string message) => Console.WriteLine(message);
     }
 
-    enum CreditType
+    public enum CreditType
     {
         REVOLVING_CREDIT, INSTALLMENT_CREDIT, OPEN_CREDIT
     }
 
-    enum CreditStatus
+    public enum CreditStatus
     {
         ACTIVE, OVERDUE, CLOSED
     }

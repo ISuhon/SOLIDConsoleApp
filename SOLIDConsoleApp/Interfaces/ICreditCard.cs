@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Interfaces
 {
-    internal interface ICreditCard
+    public interface ICreditCard
     {
         public string? CardNumber { get; set; }
         public DateTime ExpirationDate { get; set; }

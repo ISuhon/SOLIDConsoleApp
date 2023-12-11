@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Interfaces
 {
-    internal interface ICreditData
+    public interface ICreditData
     {
         public double CreditSum { get; set; }
         public Client.CreditType CreditType { get; set; }

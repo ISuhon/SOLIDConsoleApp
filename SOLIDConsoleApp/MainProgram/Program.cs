@@ -37,11 +37,9 @@ namespace SOLIDConsoleApp.MainProgram
                 ClientBalance balance1 = new ClientBalance();
                 ClientBalance balance2 = new ClientBalance();
 
-                balance1.Id = client1.Id;
                 balance1.Surname = client1.LastName;
                 balance1.ClientData = client1;
 
-                balance2.Id = client2.Id;
                 balance2.Surname = client2.LastName;
                 balance2.ClientData = client2;
 
@@ -76,6 +74,50 @@ namespace SOLIDConsoleApp.MainProgram
                 context.SaveChanges();
             }
             
+        }
+
+        private static void UpdateCreditStatus(BankContext? context)
+        {
+            int creditIdToUpdate = 1; // Припустиме значення Id кредиту, яке ви хочете оновити
+
+            var creditToUpdate = context.Credits.FirstOrDefault(c => c.Id == creditIdToUpdate);
+
+            if (creditToUpdate != null)
+            {
+                // Оновлення статусу на CLOSED, якщо поточний статус є ACTIVE
+                if (creditToUpdate.CreditStatus == CreditStatus.ACTIVE)
+                {
+                    creditToUpdate.CreditStatus = CreditStatus.CLOSED;
+                    context.SaveChanges();
+                    Console.WriteLine($"Credit with Id {creditIdToUpdate} status updated to CLOSED.");
+                }
+                else
+                {
+                    Console.WriteLine($"Credit with Id {creditIdToUpdate} has a status other than ACTIVE.");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Credit with Id {creditIdToUpdate} not found.");
+            }
+        }
+
+        private static void DeleteClientById(BankContext? context)
+        {
+            int clientIdToDelete = 1; // Припустиме значення Id, яке ви хочете видалити
+
+            var clientToDelete = context.Clients.FirstOrDefault(c => c.Id == clientIdToDelete);
+
+            if (clientToDelete != null)
+            {
+                context.Clients.Remove(clientToDelete);
+                context.SaveChanges();
+                Console.WriteLine($"Client with Id {clientIdToDelete} deleted successfully.");
+            }
+            else
+            {
+                Console.WriteLine($"Client with Id {clientIdToDelete} not found.");
+            }
         }
     }
 }

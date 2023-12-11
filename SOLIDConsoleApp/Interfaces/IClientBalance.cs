@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Interfaces
 {
-    internal interface IClientBalance
+    public interface IClientBalance
     {
         public IListofCreditCards? creditCards { get; set; }
         public ICredits? Credits { get; set; }
