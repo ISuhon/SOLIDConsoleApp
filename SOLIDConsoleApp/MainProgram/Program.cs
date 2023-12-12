@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Hosting;
 using static SOLIDConsoleApp.MainProgram.EmployeeOptions;
 using static SOLIDConsoleApp.MainProgram.ClientOptions;
 using SOLIDConsoleApp.DataBase;
@@ -30,7 +29,7 @@ namespace SOLIDConsoleApp.MainProgram
                                                         Email = "YaDima@gmail.com".ToLower()};
                 ClientData client2 = new ClientData { FirstName = "Oleksandr", MiddleName = "Valeriyovich", LastName = "Matosha", PhoneNumber = "+380984746575", 
                                                         Email = "VaOlek@gmail.com".ToLower()};
-                context.getClients().AddRange(client1, client2);
+                context.Clients.AddRange(client1, client2);
                 context.SaveChanges();
 
                 // Adding balance of client to DB
@@ -43,7 +42,7 @@ namespace SOLIDConsoleApp.MainProgram
                 balance2.Surname = client2.LastName;
                 balance2.ClientData = client2;
 
-                context.getBalances().AddRange(balance1, balance2);
+                context.Balances.AddRange(balance1, balance2);
                 context.SaveChanges();
 
                 // Adding client card of client to DB
@@ -51,7 +50,7 @@ namespace SOLIDConsoleApp.MainProgram
                 ClientCreditCard creditCard2 = new ClientCreditCard() { CardNumber = "4557325123568213", CVVcode = 594, PIN = 6492, ExpirationDate = DateTime.Now, Fortune = 0.0, Balance = balance1 };
                 ClientCreditCard creditCard3 = new ClientCreditCard() { CardNumber = "4214562345124678", CVVcode = 953, PIN = 3226, ExpirationDate = DateTime.Now, Fortune = 0.0, Balance = balance2 };
                 
-                context.getCreditCards().AddRange(creditCard1, creditCard2, creditCard3);
+                context.CreditCards.AddRange(creditCard1, creditCard2, creditCard3);
                 context.SaveChanges();
 
                 // Adding credits of client to DB
@@ -61,7 +60,7 @@ namespace SOLIDConsoleApp.MainProgram
                 CreditData credit4 = new CreditData(600_000_000.0, CreditType.REVOLVING_CREDIT, CreditStatus.ACTIVE, DateTime.Now) { Balance = balance1 };
                 CreditData credit5 = new CreditData(850_000_000.0, CreditType.INSTALLMENT_CREDIT, CreditStatus.CLOSED, DateTime.Now) { Balance = balance2 };
 
-                context.getCredits().AddRange(new List<CreditData> { credit1, credit2, credit3, credit4, credit5 });
+                context.Credits.AddRange(new List<CreditData> { credit1, credit2, credit3, credit4, credit5 });
                 context.SaveChanges();
 
                 // Adding transactions of client to DB
@@ -70,7 +69,7 @@ namespace SOLIDConsoleApp.MainProgram
                 Transaction transaction3 = new Transaction(client1.FirstName + " " + client1.LastName, client2.Id, DateTime.Now, 15000) { ClientCreditCard = creditCard3 };
                 Transaction transaction4 = new Transaction(client1.FirstName + " " + client1.LastName, client2.Id, DateTime.Now, 800) { ClientCreditCard = creditCard3 };
 
-                context.getTransactions().AddRange(new List<Transaction> { transaction1, transaction2, transaction3, transaction4 });
+                context.Transactions.AddRange(new List<Transaction> { transaction1, transaction2, transaction3, transaction4 });
                 context.SaveChanges();
             }
             

@@ -81,30 +81,5 @@ namespace SOLIDConsoleApp.DataBase
                 .Property(c => c.CreditType)
                 .HasDefaultValue(CreditType.REVOLVING_CREDIT);
         }
-
-        public DbSet<ClientData> getClients()
-        {
-            return this.Clients;
-        }
-
-        public DbSet<ClientBalance> getBalances()
-        {
-            return this.Balances;
-        }
-
-        public DbSet<ClientCreditCard> getCreditCards()
-        {
-            return this.CreditCards;
-        }
-
-        public DbSet<CreditData> getCredits()
-        {
-            return this.Credits;
-        }
-
-        public DbSet<Transaction> getTransactions()
-        {
-            return this.Transactions;
-        }
     }
 }
