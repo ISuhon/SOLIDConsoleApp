@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Interfaces
 {
-    internal interface IListofCreditCards
+    public interface IListofCreditCards
     {
         public List<ICreditCard> getCreditCards();
         public void addCreditCard(ICreditCard creditCard);

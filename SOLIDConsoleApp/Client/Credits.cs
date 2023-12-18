@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Client
 {
-    internal class Credits : ICredits
+    public class Credits : ICredits
     {
         private IEnumerable<ICredits> Events()
         {

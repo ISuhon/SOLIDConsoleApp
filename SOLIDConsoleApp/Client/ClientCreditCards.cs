@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.Client
 {
-    internal class ClientCreditCards : IListofCreditCards
+    public class ClientCreditCards : IListofCreditCards
     {
         private List<ICreditCard> creditCards = new List<ICreditCard>();
 
@@ -33,6 +33,11 @@ namespace SOLIDConsoleApp.Client
         public void addCreditCard(ICreditCard creditCard)
         {
             this.creditCards.Add(creditCard);
+        }
+
+        public ICreditCard getCreditCard(int index)
+        {
+            return this.creditCards[index];
         }
     }
 }

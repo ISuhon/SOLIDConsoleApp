@@ -87,8 +87,6 @@ namespace SOLIDConsoleApp.MainProgram
 
             balance.Credits = new Credits();
 
-            balance.creditCards = new ClientCreditCards();
-
             return balance;
         }
 
@@ -160,13 +158,13 @@ namespace SOLIDConsoleApp.MainProgram
 
                     case '2':
                         Console.Clear();
-                        _clients[ID].Balance.Credits.getCreditByID(ID).CreditStatus = changeCreditStatus();
+                        _clients[ID].ClientBalance.Credits.getCreditByID(ID).CreditStatus = changeCreditStatus();
                         Console.Clear();
                         break;
 
                     case '3':
                         Console.Clear();
-                        _clients[ID].Balance?.Credits?.showCredits();
+                        _clients[ID].ClientBalance?.Credits?.showCredits();
                         break;
                     case '4':
                         Console.Clear();
@@ -213,7 +211,7 @@ namespace SOLIDConsoleApp.MainProgram
                     break;
             }
 
-            _clients[ID]?.Balance?.Credits?.addCredit(new CreditData(creditSum, creditType, CreditStatus.ACTIVE, date));
+            _clients[ID]?.ClientBalance?.Credits?.addCredit(new CreditData(creditSum, creditType, CreditStatus.ACTIVE, date));
         }
 
         public static CreditStatus changeCreditStatus()
@@ -259,7 +257,7 @@ namespace SOLIDConsoleApp.MainProgram
 
             creditCard.Fortune = 0;
 
-            _clients[ID]?.Balance?.creditCards?.addCreditCard(new ClientCreditCard(creditCard.CardNumber, date, CVV, 
+            _clients[ID]?.ClientBalance?.creditCards?.addCreditCard(new ClientCreditCard(creditCard.CardNumber, date, CVV, 
                 PIN, creditCard.Fortune, new TransactionHistory()));
         }
     }
