@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using System;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SOLIDConsoleApp.DataBase.ContextFactory
 {
-    internal class BankContextFactory
+    internal class BankContextFactory : IDesignTimeDbContextFactory<BankContext>
     {
         public BankContext CreateDbContext(string[] args)
         {
