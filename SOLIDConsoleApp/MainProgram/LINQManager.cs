@@ -44,6 +44,24 @@ namespace SOLIDConsoleApp.MainProgram
             PrintResult(IntersectQuery);
         }
 
+        internal void Join()
+        {
+            var JoinQuery = from Balance in context?.Balances
+                            join CreditCards in context?.CreditCards
+                            on Balance.Id equals CreditCards.BalanceId
+                            select new
+                            {
+                                Surname = Balance.Surname,
+                                PIN = CreditCards.PIN
+                            };
+
+            foreach(var join in JoinQuery) 
+            {
+                Console.WriteLine($"{join.Surname} : {join.PIN}");
+            }
+
+        }
+
         private static void PrintResult(IQueryable queryable)
         {
             foreach(var result in queryable) 
