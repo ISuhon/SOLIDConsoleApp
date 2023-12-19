@@ -85,6 +85,17 @@ namespace SOLIDConsoleApp.MainProgram
             }
         }
 
+        internal void AggregateFunctions()
+        {
+            // Aggregate function : counting number of transactions
+            var count = context?.Transactions.Count();
+            Console.WriteLine($"Total transactions : {count}");
+
+            // Aggregate function : finding minimal amount of transaction
+            var minimalAmount = context?.Transactions.Min(t => t.TransactionAmount);
+            Console.WriteLine($"Minimal transaction amount : {minimalAmount}");
+        }
+
         private static void PrintResult(IQueryable queryable)
         {
             foreach(var result in queryable) 
