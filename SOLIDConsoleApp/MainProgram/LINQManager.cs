@@ -26,5 +26,18 @@ namespace SOLIDConsoleApp.MainProgram
                 Console.WriteLine(union);
             }
         }
+
+        internal void Except()
+        {
+            var CreditCardExpitationDateQuery = context?.CreditCards.Select(c => c.ExpirationDate);
+            var CreditEndDateQuery = context?.Credits.Select(c => c.CreditEndDate);
+
+            var ExceptQuery = CreditCardExpitationDateQuery.Except(CreditEndDateQuery);
+
+            foreach(var Except in ExceptQuery)
+            {
+                Console.WriteLine(Except);
+            }
+        }
     }
 }
