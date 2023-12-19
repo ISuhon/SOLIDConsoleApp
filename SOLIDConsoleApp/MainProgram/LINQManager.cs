@@ -62,6 +62,13 @@ namespace SOLIDConsoleApp.MainProgram
 
         }
 
+        internal void Distinct()
+        {
+            var TransactionsAmountDistinctQuery = context?.Transactions.Select(t => t.TransactionAmount).Distinct();
+
+            PrintResult(TransactionsAmountDistinctQuery);
+        }
+
         private static void PrintResult(IQueryable queryable)
         {
             foreach(var result in queryable) 
