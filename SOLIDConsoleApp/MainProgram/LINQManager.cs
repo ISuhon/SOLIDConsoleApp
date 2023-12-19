@@ -69,6 +69,22 @@ namespace SOLIDConsoleApp.MainProgram
             PrintResult(TransactionsAmountDistinctQuery);
         }
 
+        internal void GroupBy()
+        {
+            var GroupedQuery = context?.Credits
+                .GroupBy(c => c.CreditStatus)
+                .Select(group => new
+                {
+                    Value = group.Key,
+                    Count = group.Count()
+                });
+
+            foreach(var group in GroupedQuery)
+            {
+                Console.WriteLine($"Value : {group.Value} \nCount : {group.Count}");
+            }
+        }
+
         private static void PrintResult(IQueryable queryable)
         {
             foreach(var result in queryable) 
