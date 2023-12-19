@@ -21,22 +21,34 @@ namespace SOLIDConsoleApp.MainProgram
 
             var UnionQuery = ClientQuery.Union(BalanceQuery);
 
-            foreach(var union in UnionQuery) 
-            {
-                Console.WriteLine(union);
-            }
+            PrintResult(UnionQuery);
         }
 
         internal void Except()
         {
-            var CreditCardExpitationDateQuery = context?.CreditCards.Select(c => c.ExpirationDate);
+            var CreditCardExpirationDateQuery = context?.CreditCards.Select(c => c.ExpirationDate);
             var CreditEndDateQuery = context?.Credits.Select(c => c.CreditEndDate);
 
-            var ExceptQuery = CreditCardExpitationDateQuery.Except(CreditEndDateQuery);
+            var ExceptQuery = CreditCardExpirationDateQuery.Except(CreditEndDateQuery);
 
-            foreach(var Except in ExceptQuery)
+            PrintResult(ExceptQuery);
+        }
+
+        internal void Intersect()
+        {
+            var TransactionsPayeeQuery = context?.Transactions.Select(t => t.Payee);
+            var BalanceSurnameQuery = context?.Balances.Select(b => b.Surname);
+
+            var IntersectQuery = TransactionsPayeeQuery.Intersect(BalanceSurnameQuery);
+
+            PrintResult(IntersectQuery);
+        }
+
+        private static void PrintResult(IQueryable queryable)
+        {
+            foreach(var result in queryable) 
             {
-                Console.WriteLine(Except);
+                Console.WriteLine(result);
             }
         }
     }
