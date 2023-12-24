@@ -15,7 +15,7 @@ namespace SOLIDConsoleApp.MainProgram
         {
             this.context = context;
         }
- 
+#nullable disable
         internal void Union()
         {
             var ClientQuery = context?.Clients.Select(c => c.LastName);
@@ -107,12 +107,24 @@ namespace SOLIDConsoleApp.MainProgram
 
         internal void ExplicitLoading()
         {
-#nullable disable
             var balances = context?.Balances.FirstOrDefault();
 
             context?.Entry(balances).Collection(c => c.CreditsForDB).Load();
 
             Console.WriteLine($"Balance: {balances.Surname}");
+            PrintResult(balances.CreditsForDB);
+        }
+
+        internal void LazyLoading()
+        {
+            var balances = context?.Balances?.FirstOrDefault();
+
+            if(CheckNullReference(balances.CreditsForDB))
+            {
+                Console.WriteLine("Balance is null");
+                return;
+            }
+
             PrintResult(balances.CreditsForDB);
         }
 
@@ -122,6 +134,11 @@ namespace SOLIDConsoleApp.MainProgram
             {
                 Console.WriteLine(result);
             }
+        }
+
+        private static bool CheckNullReference<T>(T obj)
+        {
+            return (obj == null) ? true : false;
         }
     }
 }

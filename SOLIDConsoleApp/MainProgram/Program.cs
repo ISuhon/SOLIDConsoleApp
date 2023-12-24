@@ -26,7 +26,7 @@ namespace SOLIDConsoleApp.MainProgram
             {
                 LINQManager manager = new LINQManager(context);
 
-                manager.ExplicitLoading();
+                manager.LazyLoading();
             }
             
         }
