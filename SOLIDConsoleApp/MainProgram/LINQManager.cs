@@ -1,4 +1,5 @@
-﻿using SOLIDConsoleApp.DataBase;
+﻿using Microsoft.EntityFrameworkCore;
+using SOLIDConsoleApp.DataBase;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace SOLIDConsoleApp.MainProgram
         {
             this.context = context;
         }
+ 
         internal void Union()
         {
             var ClientQuery = context?.Clients.Select(c => c.LastName);
@@ -96,7 +98,13 @@ namespace SOLIDConsoleApp.MainProgram
             Console.WriteLine($"Minimal transaction amount : {minimalAmount}");
         }
 
-        private static void PrintResult(IQueryable queryable)
+        internal void EagerLoading()
+        {
+            var balancesWithCredits = context?.Balances.Include(c => c.CreditCardsForDB);
+
+            PrintResult(balancesWithCredits);
+        }
+        private static void PrintResult<T>(IEnumerable<T> queryable)
         {
             foreach(var result in queryable) 
             {
