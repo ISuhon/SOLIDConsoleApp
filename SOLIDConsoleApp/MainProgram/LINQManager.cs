@@ -1,5 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using SOLIDConsoleApp.DataBase;
+using SOLIDConsoleApp.Client;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -140,6 +142,19 @@ namespace SOLIDConsoleApp.MainProgram
             context.SaveChanges();
 
             PrintResult(context?.Transactions);
+        }
+
+        internal void StoredProcedure()
+        {
+            var result = context?.Credits.FromSqlRaw("EXEC dbo.GetCreditsBySumAndStatus");
+
+            if(CheckNullReference(result))
+            {
+                Console.WriteLine("Didn't found any credit");
+                return;
+            }
+
+            PrintResult(result);
         }
 
         private static void PrintResult<T>(IEnumerable<T> queryable)
