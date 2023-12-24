@@ -128,6 +128,20 @@ namespace SOLIDConsoleApp.MainProgram
             PrintResult(balances.CreditsForDB);
         }
 
+        internal void NoTrackingData()
+        {
+            var untrackedTransaction = context?.Transactions.AsNoTracking().ToList();
+
+            untrackedTransaction[0].TransactionAmount = 2500;
+
+            context.Transactions.Attach(untrackedTransaction[0]);
+            context.Entry(untrackedTransaction[0]).State = EntityState.Modified;
+
+            context.SaveChanges();
+
+            PrintResult(context?.Transactions);
+        }
+
         private static void PrintResult<T>(IEnumerable<T> queryable)
         {
             foreach(var result in queryable) 

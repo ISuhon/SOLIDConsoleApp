@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SOLIDConsoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec73d77ecf2e0bf5cab5aa3de5520d4f579265b2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a374561bddf03568d9ab589bb8eaf97715017fe6")]
 [assembly: System.Reflection.AssemblyProductAttribute("SOLIDConsoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SOLIDConsoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
