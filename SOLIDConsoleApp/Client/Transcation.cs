@@ -38,8 +38,8 @@ namespace SOLIDConsoleApp.Client
             return $"Payee : {Payee}\n" +
                 $"ReceiverID : {ReceiverID}\n" +
                 $"Transaction Date : {TransactionDate}\n" +
-                $"Transaction Amount : {TransactionAmount}" +
-                $"\n========================\n";
+                $"Transaction Amount : {TransactionAmount}\n" +
+                $"========================\n";
         }
 
         void MessageOfSuccessfulTransaction(string message) => Console.WriteLine(message);
