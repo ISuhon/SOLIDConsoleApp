@@ -104,6 +104,18 @@ namespace SOLIDConsoleApp.MainProgram
 
             PrintResult(balancesWithCredits);
         }
+
+        internal void ExplicitLoading()
+        {
+#nullable disable
+            var balances = context?.Balances.FirstOrDefault();
+
+            context?.Entry(balances).Collection(c => c.CreditsForDB).Load();
+
+            Console.WriteLine($"Balance: {balances.Surname}");
+            PrintResult(balances.CreditsForDB);
+        }
+
         private static void PrintResult<T>(IEnumerable<T> queryable)
         {
             foreach(var result in queryable) 
