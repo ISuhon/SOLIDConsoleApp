@@ -20,37 +20,73 @@ namespace SOLIDConsoleApp.MainProgram
 #nullable disable
         internal void Union()
         {
-            var ClientQuery = context?.Clients.Select(c => c.LastName);
-            var BalanceQuery = context?.Balances.Select(b => b.Surname);
+            var clientQuery = context?.Clients.Select(c => c.LastName);
+            var balanceQuery = context?.Balances.Select(b => b.Surname);
 
-            var UnionQuery = ClientQuery.Union(BalanceQuery);
+            if(CheckNullReference(clientQuery))
+            {
+                Console.WriteLine("Client is empty");
+                return;
+            }
 
-            PrintResult(UnionQuery);
+            if (CheckNullReference(balanceQuery))
+            {
+                Console.WriteLine("Balance is empty");
+                return;
+            }
+
+            var unionQuery = clientQuery.Union(balanceQuery);
+
+            PrintResult(unionQuery);
         }
 
         internal void Except()
         {
-            var CreditCardExpirationDateQuery = context?.CreditCards.Select(c => c.ExpirationDate);
-            var CreditEndDateQuery = context?.Credits.Select(c => c.CreditEndDate);
+            var creditCardExpirationDateQuery = context?.CreditCards.Select(c => c.ExpirationDate);
+            var creditEndDateQuery = context?.Credits.Select(c => c.CreditEndDate);
 
-            var ExceptQuery = CreditCardExpirationDateQuery.Except(CreditEndDateQuery);
+            if (CheckNullReference(creditCardExpirationDateQuery))
+            {
+                Console.WriteLine("Expiration date of credit cards is empty");
+                return;
+            }
 
-            PrintResult(ExceptQuery);
+            if (CheckNullReference(creditEndDateQuery))
+            {
+                Console.WriteLine("End date of credit is empty");
+                return;
+            }
+
+            var exceptQuery = creditCardExpirationDateQuery.Except(creditEndDateQuery);
+
+            PrintResult(exceptQuery);
         }
 
         internal void Intersect()
         {
-            var TransactionsPayeeQuery = context?.Transactions.Select(t => t.Payee);
-            var BalanceSurnameQuery = context?.Balances.Select(b => b.Surname);
+            var transactionsPayeeQuery = context?.Transactions.Select(t => t.Payee);
+            var balanceSurnameQuery = context?.Balances.Select(b => b.Surname);
 
-            var IntersectQuery = TransactionsPayeeQuery.Intersect(BalanceSurnameQuery);
+            if (CheckNullReference(transactionsPayeeQuery))
+            {
+                Console.WriteLine("Transactions payee is empty");
+                return;
+            }
 
-            PrintResult(IntersectQuery);
+            if (CheckNullReference(balanceSurnameQuery))
+            {
+                Console.WriteLine("Balance surname is empty");
+                return;
+            }
+
+            var intersectQuery = transactionsPayeeQuery.Intersect(balanceSurnameQuery);
+
+            PrintResult(intersectQuery);
         }
 
         internal void Join()
         {
-            var JoinQuery = from Balance in context?.Balances
+            var joinQuery = from Balance in context?.Balances
                             join CreditCards in context?.CreditCards
                             on Balance.Id equals CreditCards.BalanceId
                             select new
@@ -59,7 +95,13 @@ namespace SOLIDConsoleApp.MainProgram
                                 PIN = CreditCards.PIN
                             };
 
-            foreach(var join in JoinQuery) 
+            if (CheckNullReference(joinQuery))
+            {
+                Console.WriteLine("Can't find any references");
+                return;
+            }
+
+            foreach (var join in joinQuery) 
             {
                 Console.WriteLine($"{join.Surname} : {join.PIN}");
             }
@@ -68,14 +110,20 @@ namespace SOLIDConsoleApp.MainProgram
 
         internal void Distinct()
         {
-            var TransactionsAmountDistinctQuery = context?.Transactions.Select(t => t.TransactionAmount).Distinct();
+            var transactionsAmountDistinctQuery = context?.Transactions.Select(t => t.TransactionAmount).Distinct();
 
-            PrintResult(TransactionsAmountDistinctQuery);
+            if (CheckNullReference(transactionsAmountDistinctQuery))
+            {
+                Console.WriteLine("Transactions amount is empty");
+                return;
+            }
+
+            PrintResult(transactionsAmountDistinctQuery);
         }
 
         internal void GroupBy()
         {
-            var GroupedQuery = context?.Credits
+            var groupedQuery = context?.Credits
                 .GroupBy(c => c.CreditStatus)
                 .Select(group => new
                 {
@@ -83,7 +131,7 @@ namespace SOLIDConsoleApp.MainProgram
                     Count = group.Count()
                 });
 
-            foreach(var group in GroupedQuery)
+            foreach (var group in groupedQuery)
             {
                 Console.WriteLine($"Value : {group.Value} \nCount : {group.Count}");
             }
@@ -104,12 +152,24 @@ namespace SOLIDConsoleApp.MainProgram
         {
             var balancesWithCredits = context?.Balances.Include(c => c.CreditCardsForDB);
 
+            if (CheckNullReference(balancesWithCredits))
+            {
+                Console.WriteLine("There is no such balances");
+                return;
+            }
+
             PrintResult(balancesWithCredits);
         }
 
         internal void ExplicitLoading()
         {
             var balances = context?.Balances.FirstOrDefault();
+
+            if (CheckNullReference(balances))
+            {
+                Console.WriteLine("Balances is empty");
+                return;
+            }
 
             context?.Entry(balances).Collection(c => c.CreditsForDB).Load();
 
@@ -164,6 +224,7 @@ namespace SOLIDConsoleApp.MainProgram
                 Console.WriteLine(result);
             }
         }
+#nullable enable
 
         private static bool CheckNullReference<T>(T obj)
         {
