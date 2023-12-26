@@ -90,8 +90,8 @@ namespace SOLIDConsoleApp.Client
                 $"Middle name : {MiddleName}\n" +
                 $"Last name : {LastName}\n" +
                 $"Phone number : {PhoneNumber}\n" +
-                $"e-Mail : {Email}" +
-                $"\n========================\n";
+                $"e-Mail : {Email}\n" +
+                $"========================\n";
         }
 
         void MessageOfCreatedClient(string message) => Console.WriteLine(message);

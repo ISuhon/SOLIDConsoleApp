@@ -39,9 +39,9 @@ namespace SOLIDConsoleApp.Client
         public override string? ToString()
         {
             return $"Credit sum: {CreditSum}\n" + 
-                $"Credit type: {CreditType.ToString()}" +
+                $"Credit type: {CreditType.ToString()}\n" +
                 $"Credit status: {CreditStatus.ToString()}\n" + 
-                $"Credit end date: {CreditEndDate}" +
+                $"Credit end date: {CreditEndDate}\n" +
                 $"========================\n";
         }
 
