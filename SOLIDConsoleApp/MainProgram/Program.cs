@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using static SOLIDConsoleApp.MainProgram.EmployeeOptions;
 using static SOLIDConsoleApp.MainProgram.ClientOptions;
+using static SOLIDConsoleApp.Threads.ThreadsManager;
 using SOLIDConsoleApp.DataBase;
 using SOLIDConsoleApp.DataBase.ContextFactory;
 
@@ -18,17 +19,36 @@ namespace SOLIDConsoleApp.MainProgram
 
        
 
-        public static void Main(string[] args)
+        //public static void Main(string[] args)
+        //{
+        //    List<Thread> threads = new List<Thread>();
+
+        //    // Start threads execution
+        //    for(int i = 0; i < 10; i++)
+        //    {
+        //        threads.Add(new Thread(CreateAndSaveClient));
+        //        threads[i].Start();
+        //    }
+
+        //    // Stop threads execution
+        //    foreach (Thread t in threads)
+        //    {
+        //        t.Join();
+        //    }
+        //}
+
+        public static async Task Main()
         {
-            var contextFactory = new BankContextFactory();
+            List<Task> tasks = new List<Task>();
 
-            using(var context = contextFactory.CreateDbContext(new string[] { }))
+            for(int i = 0; i < 5; i++)
             {
-                LINQManager manager = new LINQManager(context);
-
-                manager.StoredProcedure();
+                tasks.Add(Task.Run(() => AsyncCreateAndSaveClient()));
             }
-            
+
+            await Task.WhenAll(tasks);
+
+            Console.WriteLine("Adding all clients to DB successfully");
         }
 
 
